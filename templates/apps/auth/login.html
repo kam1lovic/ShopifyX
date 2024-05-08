@@ -1,0 +1,57 @@
+{% extends 'apps/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="content_auth_form">
+        <div class="content_auth_form_group">
+            <div class="content_auth_form_group_input">
+                <div class="card">
+                    <form method="post" action="{% url 'login_page' %}">
+                        {% csrf_token %}
+                        <div class="card-body p-4">
+                            <div class="row flex-between-center">
+                                <div class="col-auto">
+                                    <h3>Kirish</h3>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="phone-mask">Phone number</label>
+                                </div>
+                                <input type="text" name="phone" id="phone-mask" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="split-login-password">Password</label>
+                                </div>
+                                <input class="form-control" name="password" id="split-login-password" type="password"
+                                       required>
+                            </div>
+                            <div class="row flex-between-center">
+                                <div class="col-auto">
+                                    <div class="form-check mb-0">
+                                        <input class="form-check-input" autocomplete="on" type="checkbox"
+                                               id="split-checkbox">
+                                        <label class="form-check-label mb-0" for="split-checkbox">Men qoidalar bilan
+                                            tanishdim</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-auto">
+                                    <a class="fs--1" href="#">Foydalanish shartlari</a>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Kirish
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'apps/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="container">
+                <div class="container border-bottom-4">
+                    <div class="header_tab_menu">
+                        <div class="header_menu" style="overflow: auto">
+                            <a href="/admin_page/stats?period=today" class="btn btn-default">Bugun</a>
+                            <a href="/admin_page/stats?period=last_day" class="btn btn-default">Kechagi</a>
+                            <a href="/admin_page/stats?period=wekly" class="btn btn-default">Haftalik</a>
+                            <a href="/admin_page/stats?period=monthly" class="btn btn-default">Oylik</a>
+                            <a href="/admin_page/stats?period=all" class="btn btn-default">Hammasi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-center">
+                        <tr>
+                            <th scope="col">Stream</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Visit</th>
+                            <th scope="col">New</th>
+                            <th scope="col">Ready</th>
+                            <th scope="col">Delivery</th>
+                            <th scope="col">Delivered</th>
+                            <th scope="col">Missed call</th>
+                            <th scope="col">Cancelled</th>
+                            <th scope="col">Archived</th>
+                        </tr>
+
+                        </thead>
+
+                        <tbody class="text-center">
+
+                        <tr>
+                            <th>{{ stream.name }}</th>
+                            <th>{{ stream.product.name }}</th>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+
+                        <tr class="bg-info">
+                            <td> JAMI</td>
+                            <td></td>
+                            <td> 0</td>
+                            <td> 0</td>
+                            <td> 0</td>
+                            <td> 0</td>
+                            <td> 0</td>
+                            <td> 0</td>
+                            <td> 0</td>
+                            <td> 0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

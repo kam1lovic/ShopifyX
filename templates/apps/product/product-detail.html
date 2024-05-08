@@ -1,0 +1,413 @@
+{% extends 'apps/base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block content %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="product-slider" id="galleryTop">
+                        <div class="swiper-container theme-slider position-lg-absolute all-0 swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-autoheight"
+                             data-swiper="{&quot;autoHeight&quot;:true,&quot;spaceBetween&quot;:5,&quot;loop&quot;:true,&quot;loopedSlides&quot;:5,&quot;thumb&quot;:{&quot;spaceBetween&quot;:5,&quot;slidesPerView&quot;:5,&quot;loop&quot;:true,&quot;freeMode&quot;:true,&quot;grabCursor&quot;:true,&quot;loopedSlides&quot;:5,&quot;centeredSlides&quot;:true,&quot;slideToClickedSlide&quot;:true,&quot;watchSlidesVisibility&quot;:true,&quot;watchSlidesProgress&quot;:true,&quot;parent&quot;:&quot;#galleryTop&quot;},&quot;slideToClickedSlide&quot;:true}">
+                            <div class="swiper-wrapper h-100" id="swiper-wrapper-8f86bcc33d0b6f4c" aria-live="polite"
+                                 style="height: 406px; transform: translate3d(-1990px, 0px, 0px); transition-duration: 0ms;">
+                                <div class="swiper-slide h-100 swiper-slide-duplicate swiper-slide-duplicate-next"
+                                     data-swiper-slide-index="1" role="group" aria-label="2 / 6"
+                                     style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-2.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate" data-swiper-slide-index="2"
+                                     role="group" aria-label="3 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-3.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate" data-swiper-slide-index="3"
+                                     role="group" aria-label="4 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-4.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate" data-swiper-slide-index="4"
+                                     role="group" aria-label="5 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-5.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate swiper-slide-prev"
+                                     data-swiper-slide-index="5" role="group" aria-label="6 / 6"
+                                     style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-6.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-active" data-swiper-slide-index="0"
+                                     role="group" aria-label="1 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100" src="assets/img/products/1.jpg"
+                                        alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-next" data-swiper-slide-index="1"
+                                     role="group" aria-label="2 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-2.jpg" alt=""></div>
+                                <div class="swiper-slide h-100" data-swiper-slide-index="2" role="group"
+                                     aria-label="3 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-3.jpg" alt=""></div>
+                                <div class="swiper-slide h-100" data-swiper-slide-index="3" role="group"
+                                     aria-label="4 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-4.jpg" alt=""></div>
+                                <div class="swiper-slide h-100" data-swiper-slide-index="4" role="group"
+                                     aria-label="5 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-5.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate-prev" data-swiper-slide-index="5"
+                                     role="group" aria-label="6 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-6.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate swiper-slide-duplicate-active"
+                                     data-swiper-slide-index="0" role="group" aria-label="1 / 6"
+                                     style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100" src="assets/img/products/1.jpg"
+                                        alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate swiper-slide-duplicate-next"
+                                     data-swiper-slide-index="1" role="group" aria-label="2 / 6"
+                                     style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-2.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate" data-swiper-slide-index="2"
+                                     role="group" aria-label="3 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-3.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate" data-swiper-slide-index="3"
+                                     role="group" aria-label="4 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-4.jpg" alt=""></div>
+                                <div class="swiper-slide h-100 swiper-slide-duplicate" data-swiper-slide-index="4"
+                                     role="group" aria-label="5 / 6" style="width: 393px; margin-right: 5px;"><img
+                                        class="rounded-1 fit-cover h-100 w-100"
+                                        src="assets/img/products/1-5.jpg" alt=""></div>
+                            </div>
+                            <div class="swiper-nav">
+                                <div class="swiper-button-next swiper-button-white" tabindex="0" role="button"
+                                     aria-label="Next slide" aria-controls="swiper-wrapper-8f86bcc33d0b6f4c"></div>
+                                <div class="swiper-button-prev swiper-button-white" tabindex="0" role="button"
+                                     aria-label="Previous slide" aria-controls="swiper-wrapper-8f86bcc33d0b6f4c"></div>
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                    </div>
+                    <div class="swiper-container thumb swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-container-free-mode swiper-container-thumbs"
+                         style="cursor: grab;">
+                        <div class="swiper-wrapper" id="swiper-wrapper-63e9a4eea36f0a84" aria-live="polite"
+                             style="transform: translate3d(-238.8px, 0px, 0px); transition-duration: 0ms;">
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+                                 data-swiper-slide-index="1" role="group" aria-label="2 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-2.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group"
+                                 aria-label="3 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-3.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" role="group"
+                                 aria-label="4 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-4.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-visible"
+                                 data-swiper-slide-index="4" role="group" aria-label="5 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-5.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-visible swiper-slide-prev"
+                                 data-swiper-slide-index="5" role="group" aria-label="6 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-6.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-visible swiper-slide-active swiper-slide-thumb-active"
+                                 data-swiper-slide-index="0" role="group" aria-label="1 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-visible swiper-slide-next" data-swiper-slide-index="1"
+                                 role="group" aria-label="2 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-2.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-visible" data-swiper-slide-index="2" role="group"
+                                 aria-label="3 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-3.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-4.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="5 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-5.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="5"
+                                 role="group" aria-label="6 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-6.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active swiper-slide-thumb-active"
+                                 data-swiper-slide-index="0" role="group" aria-label="1 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+                                 data-swiper-slide-index="1" role="group" aria-label="2 / 6"
+                                 style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-2.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="2" role="group"
+                                 aria-label="3 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-3.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3" role="group"
+                                 aria-label="4 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-4.jpg"
+                                     alt="">
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" role="group"
+                                 aria-label="5 / 6" style="width: 74.6px; margin-right: 5px;">
+                                <img class="img-fluid rounded mt-1"
+                                     src="file:///Users/macbook/PycharmProjects/Alijahon/templates/public/assets/img/products/1-5.jpg"
+                                     alt="">
+                            </div>
+                        </div>
+                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                </div>
+                <div class="col-lg-6">
+                    <h5>{{ product.name }}</h5><a class="fs--1 mb-2 d-block">{{ product.category.name }}</a>
+                    <p class="fs--1">{{ product.short_description|safe }}</p>
+                    <h4 class="d-flex align-items-center"><span class="text-warning me-2">$1200</span><span
+                            class="me-1 fs--1 text-500">
+                      <del class="me-1">$2400</del><strong>-50%</strong></span></h4>
+                    <p class="fs--1 mb-1"><span>Shipping Cost: </span><strong>$50</strong></p>
+                    <p class="fs--1">Stock: <strong class="text-success">Available</strong></p>
+                    <p class="fs--1 mb-3">Tags:
+                        {% for tag in product.tag.all %}
+                            <a class="ms-2">{{ tag }}</a>
+                        {% endfor %}
+                    </p>
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="overflow-hidden mt-4">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active ps-0" id="description-tab"
+                                                data-bs-toggle="tab" href="#tab-description" role="tab"
+                                                aria-controls="tab-description" aria-selected="true">Description</a>
+                        </li>
+
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="tab-description" role="tabpanel"
+                             aria-labelledby="description-tab">
+                            <div class="mt-3">
+                                <p>{{ product.description|safe }}</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-specifications" role="tabpanel"
+                             aria-labelledby="specifications-tab">
+                            <table class="table fs--1 mt-3">
+                                <tbody>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Processor</td>
+                                    <td>2.3GHz quad-core Intel Core i5,</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Memory</td>
+                                    <td>8GB of 2133MHz LPDDR3 onboard memory</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Brand Name</td>
+                                    <td>Apple</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Model</td>
+                                    <td>Mac Book Pro</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Display</td>
+                                    <td>13.3-inch (diagonal) LED-backlit display with IPS technology</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Storage</td>
+                                    <td>512GB SSD</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Graphics</td>
+                                    <td>Intel Iris Plus Graphics 655</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Weight</td>
+                                    <td>7.15 pounds</td>
+                                </tr>
+                                <tr>
+                                    <td class="bg-100" style="width: 30%;">Finish</td>
+                                    <td>Silver, Space Gray</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="tab-reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="row mt-3">
+                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                    <div class="mb-1">
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com --><span
+                                            class="ms-3 text-dark fw-semi-bold">Awesome support, great code 😍</span>
+                                    </div>
+                                    <p class="fs--1 mb-2 text-600">By Drik Smith • October 14, 2019</p>
+                                    <p class="mb-0">You shouldn't need to read a review to see how nice and polished
+                                        this theme is. So I'll tell you something you won't find in the demo. After
+                                        the download I had a technical question, emailed the team and got a response
+                                        right from the team CEO with helpful advice.</p>
+                                    <hr class="my-4">
+                                    <div class="mb-1">
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star fa-w-18 text-warning fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa" data-icon="star"
+                                             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                             data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star text-warning fs--1"></span> Font Awesome fontawesome.com -->
+                                        <svg class="svg-inline--fa fa-star-half-alt fa-w-17 text-warning star-icon fs--1"
+                                             aria-hidden="true" focusable="false" data-prefix="fa"
+                                             data-icon="star-half-alt" role="img" xmlns="http://www.w3.org/2000/svg"
+                                             viewBox="0 0 536 512" data-fa-i2svg="">
+                                            <path fill="currentColor"
+                                                  d="M508.55 171.51L362.18 150.2 296.77 17.81C290.89 5.98 279.42 0 267.95 0c-11.4 0-22.79 5.9-28.69 17.81l-65.43 132.38-146.38 21.29c-26.25 3.8-36.77 36.09-17.74 54.59l105.89 103-25.06 145.48C86.98 495.33 103.57 512 122.15 512c4.93 0 10-1.17 14.87-3.75l130.95-68.68 130.94 68.7c4.86 2.55 9.92 3.71 14.83 3.71 18.6 0 35.22-16.61 31.66-37.4l-25.03-145.49 105.91-102.98c19.04-18.5 8.52-50.8-17.73-54.6zm-121.74 123.2l-18.12 17.62 4.28 24.88 19.52 113.45-102.13-53.59-22.38-11.74.03-317.19 51.03 103.29 11.18 22.63 25.01 3.64 114.23 16.63-82.65 80.38z"></path>
+                                        </svg>
+                                        <!-- <span class="fa fa-star-half-alt text-warning star-icon fs--1"></span> Font Awesome fontawesome.com --><span
+                                            class="ms-3 text-dark fw-semi-bold">Outstanding Design, Awesome Support</span>
+                                    </div>
+                                    <p class="fs--1 mb-2 text-600">By Liane • December 14, 2019</p>
+                                    <p class="mb-0">This really is an amazing template - from the style to the font
+                                        - clean layout. SO worth the money! The demo pages show off what Bootstrap 4
+                                        can impressively do. Great template!! Support response is FAST and the team
+                                        is amazing - communication is important.</p>
+                                </div>
+                                <div class="col-lg-6 ps-lg-5">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post" action="{% url 'order_create' %}">
+            <input hidden name="product" value="{{ product.slug }}">
+            {% csrf_token %}
+            <div class="mb-2">
+                <label class="form-label" style="display: block; text-align: center;"
+                       for="formGroupNameInput">NAME:</label>
+                <input class="form-control form-control-sm" placeholder="Enter your name"
+                       style="width: 700px; height: 30px; margin: auto; display: block;" name="name"
+                       id="formGroupNameInput" type="text">
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="formGroupEmailInput" style="display: block; text-align: center;">
+                    PHONE:</label>
+                <input class="form-control form-control-sm" placeholder="Enter your phone"
+                       style="width: 700px; height: 30px; margin: auto;"
+                       id="phone-mask"
+                       required="" name="phone_number"
+                       type="text">
+                <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 20px;">
+                    <button class="btn btn-primary" type="submit"> Buyurtma berish</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

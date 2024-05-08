@@ -1,0 +1,67 @@
+{% extends 'apps/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="card-body">
+        <div class="container">
+            <br>
+            <h3 class="text-center"> Mening havolalarim </h3>
+            <br>
+
+            <div class="row">
+
+                {% for stream in streams %}
+                    <div class="col-sm-4">
+                        <div class="card-header">
+                            <!-- <a href="#" onclick="myFunction(58839)" data-request="onDeleteStream"
+                                data-request-data="'id': 58839, 'csrftoken':U5Hm5u3cj6MOCNrwtZ5CQAeadO1QVoPIPFgKq7tMfrUErORvZY2745UdiQ39P1N9"
+                                data-request-flash="" data-request-success="$(this).closest('.col-sm-4').remove()"
+                                data-request-confirm="Siz rostdan ham oqimni o'chirmoqchimisiz?" class="text-danger"
+                                style="float: right"> <span class="fa fa-trash" aria-hidden="true"></span> </a> -->
+
+                            <h5>{{ stream.name }}</h5>
+
+                        </div>
+                        <div class="card">
+                            <div class="card-body" style="position: relative;">
+                                <div class="form-group">
+                                    <input id="myText" type="text"
+                                           value="http://localhost:8000/product/{{ stream.product.slug }}"
+                                           readonly=""
+                                           class="ref_link form-control">
+                                </div>
+                                <a href="https://alijahon.uz/oqim/58839" target="_blank"><i
+                                        class="fa-solid fa-square-arrow-up-right"
+                                        style="font-size: 29px; float:left; color:#5091e9; margin-top: 9px; margin-right:9px;"
+                                        aria-hidden="true"></i></a>
+                                <a href="https://t.me/AlijahonBot?start=order_58839" target="_blank"><i
+                                        class="fa-brands fa-telegram"
+                                        style="font-size: 29px; float:left; color:#5091e9; margin-top: 9px;"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        const copyContent = async () => {
+            let inputField = document.getElementById('myText');
+            inputField.select();
+            try {
+                await navigator.clipboard.writeText(inputField.value);
+                console.log('Content copied to clipboard');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        }
+    </script>
+
+
+{% endblock %}
