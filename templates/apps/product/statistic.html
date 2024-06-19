@@ -1,7 +1,67 @@
 {% extends 'apps/base.html' %}
-
 {% load static %}
 
+{% block style %}
+    <style>
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .header_tab_menu {
+            margin-bottom: 5px;
+        }
+
+        .header_menu a {
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 40px;
+            margin-right: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .header_menu a:hover {
+            background-color: #007bff;
+        }
+
+        .table thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.1s ease;
+        }
+
+        .table tbody tr:hover {
+            background-color: #00ae65;
+        }
+
+        .bg-info {
+            background-color: #007bff;
+            color: white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #007bff;
+            color: black;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <div class="card mb-3">
         <div class="card-body">
@@ -9,16 +69,21 @@
                 <div class="container border-bottom-4">
                     <div class="header_tab_menu">
                         <div class="header_menu" style="overflow: auto">
-                            <a href="/admin_page/stats?period=today" class="btn btn-default">Bugun</a>
-                            <a href="/admin_page/stats?period=last_day" class="btn btn-default">Kechagi</a>
-                            <a href="/admin_page/stats?period=wekly" class="btn btn-default">Haftalik</a>
-                            <a href="/admin_page/stats?period=monthly" class="btn btn-default">Oylik</a>
-                            <a href="/admin_page/stats?period=all" class="btn btn-default">Hammasi</a>
+                            <a href="{% url 'statistic' %}?period=today" class="btn btn-default"
+                               style="background-color: #007bff; color: white;">Bugun</a>
+                            <a href="{% url 'statistic' %}?period=last_day" class="btn btn-default"
+                               style="background-color: #007bff; color: white;">Kecha</a>
+                            <a href="{% url 'statistic' %}?period=weekly" class="btn btn-default"
+                               style="background-color: #007bff; color: white;">Haftalik</a>
+                            <a href="{% url 'statistic' %}?period=monthly" class="btn btn-default"
+                               style="background-color: #007bff; color: white;">Oylik</a>
+                            <a href="{% url 'statistic' %}?period=all" class="btn btn-default"
+                               style="background-color: #007bff; color: white;">Hammasi</a>
                         </div>
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table sortable">
                         <thead class="text-center">
                         <tr>
                             <th scope="col">Stream</th>
@@ -32,41 +97,39 @@
                             <th scope="col">Cancelled</th>
                             <th scope="col">Archived</th>
                         </tr>
-
                         </thead>
-
                         <tbody class="text-center">
-
-                        <tr>
-                            <th>{{ stream.name }}</th>
-                            <th>{{ stream.product.name }}</th>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
-
+                        {% for stream in streams %}
+                            <tr>
+                                <th>{{ stream.name }}</th>
+                                <th>{{ stream.product.name }}</th>
+                                <td>{{ stream.visit_count }}</td>
+                                <td>{{ stream.new_count }}</td>
+                                <td>{{ stream.ready_count }}</td>
+                                <td>{{ stream.delivery_count }}</td>
+                                <td>{{ stream.delivered_count }}</td>
+                                <td>{{ stream.cancelled_count }}</td>
+                                <td>{{ stream.archived_count }}</td>
+                                <td>{{ stream.missed_call_count }}</td>
+                            </tr>
+                        {% endfor %}
                         <tr class="bg-info">
                             <td> JAMI</td>
                             <td></td>
-                            <td> 0</td>
-                            <td> 0</td>
-                            <td> 0</td>
-                            <td> 0</td>
-                            <td> 0</td>
-                            <td> 0</td>
-                            <td> 0</td>
-                            <td> 0</td>
+                            <td>{{ visit_count_total }}</td>
+                            <td>{{ new_count_total }}</td>
+                            <td>{{ ready_count_total }}</td>
+                            <td>{{ delivery_count_total }}</td>
+                            <td>{{ delivered_count_total }}</td>
+                            <td>{{ missed_call_count_total }}</td>
+                            <td>{{ cancelled_count_total }}</td>
+                            <td>{{ archived_count_total }}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
         </div>
     </div>
-
 {% endblock %}

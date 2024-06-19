@@ -1,0 +1,211 @@
+{% extends 'apps/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load thumbnail %}
+{% load absolut_uri %}
+{% load humanize %}
+
+{% block style %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #dedede;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .card-header {
+            background-color: #0066cc;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .card-title {
+            color: #333333;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #28a745;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #0066cc;
+            color: white;
+            border-color: #0066cc;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="card mb-3">
+        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messageModalLabel">Message</h5>
+                    </div>
+                    <div class="modal-body">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <br>
+            <br>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-sm-6 p-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Mening hisobim</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card" style="box-shadow: chocolate">Asosiy
+                                    balansda: {{ user.balance|intcomma }} so'm</h5>
+                                <br>
+                                <h5 class="card-title">To'lab berildi: 0 so'm</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-4">
+                        <div class="card">
+                            <br>
+                            <div class="card-header">
+                                <h5>To'lovga so'rov berish formasi</h5>
+                            </div>
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <button id="nav-money-tab" class="nav-link active" data-bs-toggle="tab"
+                                            data-bs-target="#nav-money" type="button" role="tab"
+                                            aria-controls="nav-money" aria-selected="true">Pul
+                                    </button>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-money" role="tabpanel"
+                                     aria-labelledby="nav-money-tab">
+                                    <form class="card-body" method="post" action="{% url 'payment' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="id_card_number">Karta raqami</label>
+                                            <input type="text" name="card_number" class="form-control"
+                                                   placeholder="Karta raqamini kiriting" maxlength="16"
+                                                   required="" id="id_card_number">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="id_amount">Amount</label>
+                                            <input type="number" name="amount" class="form-control"
+                                                   placeholder="Miqdorini kiriting" required="" id="id_amount">
+                                        </div>
+                                        <div class="form-group">
+                                            <select name="type" class="form-control class-type" style="display: none;"
+                                                    id="id_type">
+                                                <option value="money">Pul</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <input type="submit" value="Tasdiqlash" class="btn btn-primary">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-4">
+                <h2>Payment Information</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Card Number</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Message</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for info in payment_info %}
+                            <tr>
+                                <td>{{ info.created_at }}</td>
+                                <td>{{ info.card_number }}</td>
+                                <td>{{ info.amount }}</td>
+                                <td>{{ info.get_status_display }}</td>
+                                <td>{{ info.message }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr class="text-center">
+                                <td colspan="5">No payment requests available.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#nav-tab button').on('click', function () {
+                setTimeout(() => {
+                    let selectedTab = $(this).attr('id');
+                    if (selectedTab === 'nav-money-tab') {
+                        $('#id_type').val('money');
+                    } else if (selectedTab === 'nav-coin-tab') {
+                        $('#id_type').val('coin');
+                    }
+                }, 300);
+            });
+        });
+
+        document.getElementById('id_card_number').addEventListener('input', function (e) {
+            if (this.value.length > 16) {
+                this.value = this.value.slice(0, 16);
+            }
+        });
+
+        $(document).ready(function () {
+            // If there are messages, show the modal
+            {% if messages %}
+                $('#messageModal').modal('show');
+                setTimeout(function () {
+                    $('#messageModal').modal('hide');
+                }, 3000);
+            {% endif %}
+        });
+    </script>
+
+{% endblock %}

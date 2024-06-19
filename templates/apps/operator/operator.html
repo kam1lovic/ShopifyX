@@ -1,0 +1,372 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Operatorlar bo'limi
+        - alijahon.uz</title>
+    <link rel="stylesheet" href="{% static 'apps/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'apps/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <style>
+        select {
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .order-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .order-card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .order-card h3 {
+            color: #e74c3c;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .order-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .order-card ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .order-card ul li strong {
+            font-weight: bold;
+        }
+
+        .order-card .d-flex {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-success {
+            background: linear-gradient(90deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(90deg, rgba(253, 187, 45, 1) 0%, rgba(34, 193, 195, 1) 100%);
+        }
+
+        .btn-warning {
+            background: linear-gradient(90deg, rgba(255, 135, 44, 1) 0%, rgba(255, 60, 0, 1) 100%);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(90deg, rgba(255, 60, 0, 1) 0%, rgba(255, 135, 44, 1) 100%);
+        }
+
+        .navbar-custom {
+            background-color: #343a40;
+            height: 60px; /* fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .navbar-custom a {
+            color: #17a2b8; /* link color */
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .navbar-custom a:hover {
+            color: #0d6efd; /* hover color */
+            text-decoration: underline;
+        }
+
+        .navbar-custom div, .navbar-custom h4 {
+            margin: 0;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-custom .btn {
+            margin-left: auto; /* right align the button */
+        }
+
+        .sidebar {
+            background-color: #38ffae;
+            height: 100%;
+            padding-right: 0;
+            position: absolute;
+        }
+
+        .list-group-item {
+            height: 13%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .list-group-item.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .list-group-item:hover {
+            background: linear-gradient(90deg, rgba(255, 60, 0, 1) 0%, rgba(255, 135, 44, 1) 100%);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .list-group-item h6 {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+
+        .list-group-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            background: linear-gradient(90deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-custom">
+        <div><a href="/operator/prodcut_add">Zakaz + </a></div>
+        <div>Buyurtmalar</div>
+        <h4>ID: 721</h4>
+        <a href="/admin_page" class="btn btn-danger btn-sm">Asosiy panel</a>
+    </nav>
+    <br>
+    <div class="row">
+        <div class="col-md-2 sidebar text-center">
+            <div class="list-group text-light w-100 h-100">
+                <a href="/uz/operator" class="list-group-item active">
+                    <div>
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                    </div>
+                    <h6>Yangi buyurtmalar</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                    </div>
+                    <h6>Dostavka tayyor</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                    </div>
+                    <h6>Yetkazilmoqda</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    </div>
+                    <h6>Keyin oladi</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-archive" aria-hidden="true"></i>
+                    </div>
+                    <h6>Arxivlandi</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-chain-broken" aria-hidden="true"></i>
+                    </div>
+                    <h6>Nosoz, bekor qilindi</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </div>
+                    <h6>Yetkazib berildi</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </div>
+                    <h6>Qaytib keldi</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </div>
+                    <h6>Hold</h6>
+                </a>
+                <a href="/uz/operator" class="list-group-item">
+                    <div>
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                    </div>
+                    <h6>Hammasi</h6>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-10" style="margin-left: 16%;">
+            <div class="bg-light w-75 m-auto mt-5">
+                <form method="GET">
+                    <div>
+                        <p>
+                            <label for="id_product">Mahsulot:</label>
+                            <select name="product" id="id_product" multiple required>
+                                <option value="1">Oyoq kiyim uchun maxsus shkaf</option>
+                            </select>
+                        </p>
+
+                        <p>
+                            <label for="id_location">Viloyat:</label>
+                            <select name="location" id="id_location" multiple required>
+                                <option value="" disabled selected>Viloyatni tanlang</option>
+                                <option value="tashkent">Toshkent shahar</option>
+                                <option value="andijon">Andijon viloyati</option>
+                                <option value="buxoro">Buxoro viloyati</option>
+                                <option value="fargona">Fargʻona viloyati</option>
+                                <option value="jizzax">Jizzax viloyati</option>
+                                <option value="namangan">Namangan viloyati</option>
+                                <option value="navoiy">Navoiy viloyati</option>
+                                <option value="qashqadaryo">Qashqadaryo viloyati</option>
+                                <option value="qoraqalpogiston">Qoraqalpogʻiston Respublika</option>
+                                <option value="samarqand">Samarqand viloyati</option>
+                                <option value="sirdaryo">Sirdaryo viloyati</option>
+                                <option value="surxondaryo">Surxondaryo viloyati</option>
+                                <option value="toshkent">Toshkent viloyati</option>
+                                <option value="xorazm">Xorazm viloyati</option>
+                            </select>
+                        </p>
+
+                        <p>
+                            <label for="id_region">Tuman:</label>
+                            <select name="region" id="id_region" multiple required>
+                                <!-- Sample of options; add the rest similarly -->
+                                <option value="Amudaryo tumani">Amudaryo tumani</option>
+                                <option value="Beruniy tumani">Beruniy tumani</option>
+                                <option value="Kegayli tumani">Kegayli tumani</option>
+                                <!-- Add the remaining options as needed -->
+                            </select>
+                        </p>
+
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+                <form>
+                    <div class="container">
+                        <div class="order-card">
+                            <h2>Bolalar uchun alifbo - 129000 so'm</h2>
+                            <h3>ZAKAZ ID: #2130474</h3>
+                            <ul>
+                                <li><strong>Reklama tarqatuvchi ID:</strong> 998911081194</li>
+                                <li><strong>Client:</strong> fds - +9989XXXXXXXXX</li>
+                                <li><strong>Address:</strong> tashkent None</li>
+                                <li><strong>Narxi:</strong> 143000 so'm + <span style="color: red;">AKSIYA</span></li>
+                                <li><strong>Qo'shimcha foyda:</strong> 15000 so'm</li>
+                                <li><strong>Soni:</strong> 1ta</li>
+                                <li><strong>Vaqti:</strong> 13-May, 2024-yil 14:12</li>
+                                <li><strong>Yangilangan vaqti:</strong> 13-May, 2024-yil 14:12</li>
+                                <li><strong>Holati:</strong> Yangi</li>
+                            </ul>
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-success" style="margin-right:5px">Qabul qilish</button>
+                                <button class="btn btn-warning">Hold</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+<script src="/static/app/js/regions_filter.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        $('select').multipleSelect({
+            multiple: true,
+            multipleWidth: 500,
+            maxHeight: 200,
+            maxHeightUnit: 50,
+            filter: true
+        })
+    })
+</script>
+
+</body>
+</html>

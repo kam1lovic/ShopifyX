@@ -1,44 +1,128 @@
 {% extends 'apps/base.html' %}
 {% load static %}
+{% load absolut_uri %}
 
+{% block style %}
+    <style>
+        .container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-center {
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #5091e9;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .card-body {
+            padding: 20px;
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .ref_link {
+            border: 1px solid #5091e9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #ff6f61;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff3b2e;
+        }
+
+        .fa-solid, .fa-brands {
+            font-size: 29px;
+            float: left;
+            color: #5091e9;
+            margin-top: 9px;
+            margin-right: 9px;
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="social">
+                <div class="link facebook" onclick="shareTo('facebook')">
+                    <div class="icon">
+                        <i class="fa-brands fa-facebook"></i>
+                    </div>
+                    <div class="text">Facebook</div>
+                </div>
+                <div class="link twitter" onclick="shareTo('twitter')">
+                    <div class="icon">
+                        <i class="fa-brands fa-twitter"></i>
+                    </div>
+                    <div class="text">Twitter</div>
+                </div>
+                <!-- Add more social links here -->
+            </div>
+        </div>
+    </div>
     <div class="card-body">
         <div class="container">
             <br>
-            <h3 class="text-center"> Mening havolalarim </h3>
+            <h3 class="text-center">Mening havolalarim</h3>
             <br>
-
             <div class="row">
-
                 {% for stream in streams %}
                     <div class="col-sm-4">
                         <div class="card-header">
-                            <!-- <a href="#" onclick="myFunction(58839)" data-request="onDeleteStream"
-                                data-request-data="'id': 58839, 'csrftoken':U5Hm5u3cj6MOCNrwtZ5CQAeadO1QVoPIPFgKq7tMfrUErORvZY2745UdiQ39P1N9"
-                                data-request-flash="" data-request-success="$(this).closest('.col-sm-4').remove()"
-                                data-request-confirm="Siz rostdan ham oqimni o'chirmoqchimisiz?" class="text-danger"
-                                style="float: right"> <span class="fa fa-trash" aria-hidden="true"></span> </a> -->
-
                             <h5>{{ stream.name }}</h5>
-
                         </div>
                         <div class="card">
                             <div class="card-body" style="position: relative;">
                                 <div class="form-group">
-                                    <input id="myText" type="text"
-                                           value="http://localhost:8000/product/{{ stream.product.slug }}"
+                                    <input id="myText{{ forloop.counter }}" type="text"
+                                           value="{{ request.build_absolute_uri|get_base_url }}{% url 'product_detail' stream.id %}"
                                            readonly=""
                                            class="ref_link form-control">
+                                    <br>
+                                    <button onclick="copyToClipboard('myText{{ forloop.counter }}')"
+                                            class="btn btn-primary">Copy
+                                    </button>
                                 </div>
-                                <a href="https://alijahon.uz/oqim/58839" target="_blank"><i
+
+                                <a href="https://alijahon.uz/oqim/{{ stream.id }}" target="_blank"><i
                                         class="fa-solid fa-square-arrow-up-right"
-                                        style="font-size: 29px; float:left; color:#5091e9; margin-top: 9px; margin-right:9px;"
-                                        aria-hidden="true"></i></a>
-                                <a href="https://t.me/AlijahonBot?start=order_58839" target="_blank"><i
+                                        aria-hidden="true"></i>
+                                </a>
+                                <a href="https://t.me/AlijahonBot?start=order_{{ stream.id }}" target="_blank"><i
                                         class="fa-brands fa-telegram"
-                                        style="font-size: 29px; float:left; color:#5091e9; margin-top: 9px;"
-                                        aria-hidden="true"></i></a>
+                                        aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                         <br>
@@ -46,22 +130,22 @@
                 {% endfor %}
             </div>
         </div>
+
     </div>
 {% endblock %}
 
 {% block javascript %}
     <script>
-        const copyContent = async () => {
-            let inputField = document.getElementById('myText');
-            inputField.select();
-            try {
-                await navigator.clipboard.writeText(inputField.value);
-                console.log('Content copied to clipboard');
-            } catch (err) {
-                console.error('Failed to copy: ', err);
-            }
+        function copyToClipboard(id) {
+            var copyText = document.getElementById(id);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy");
+
+            // Alert the copied text
+            alert("Havola nusxa olindi: " + copyText.value);
         }
     </script>
 
-
 {% endblock %}
+

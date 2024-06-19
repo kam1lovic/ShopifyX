@@ -20,7 +20,8 @@
                                 <div class="d-flex justify-content-between">
                                     <label class="form-label" for="phone-mask">Phone number</label>
                                 </div>
-                                <input type="text" name="phone" id="phone-mask" class="form-control" required>
+                                <input type="text" name="phone" value="{{ user.phone }}" id="phone-mask"
+                                       class="form-control" required>
                             </div>
                             <div class="mb-3">
                                 <div class="d-flex justify-content-between">
@@ -40,12 +41,13 @@
                                 </div>
 
                                 <div class="col-auto">
-                                    <a class="fs--1" href="#">Foydalanish shartlari</a>
+                                    <a class="fs--1" href="{% url 'login_telegram' %}">Telegram orqali kirish</a>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Kirish
                                 </button>
+                                <br>
                             </div>
                         </div>
                     </form>
@@ -53,5 +55,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

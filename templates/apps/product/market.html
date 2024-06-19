@@ -2,9 +2,339 @@
 {% load static %}
 {% load thumbnail %}
 
+{% block style %}
+    <style>
+        /* Custom button styles */
+        .custom-ad-btn, .custom-btn {
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-ad-btn {
+            background-color: #e53935;
+            color: white;
+            border: none;
+        }
+
+        .custom-ad-btn:hover {
+            background-color: #f44336;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-btn.btn-primary {
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+        }
+
+        .custom-btn.btn-primary:hover {
+            background-color: #8e24aa;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-btn.btn-danger {
+            background-color: #e53935;
+            color: white;
+            border: none;
+        }
+
+        .custom-btn.btn-danger:hover {
+            background-color: #f44336;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-btn:active, .custom-ad-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal styles */
+        .modal-content {
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6a1b9a;
+        }
+
+        .close {
+            font-size: 30px;
+            color: #6a1b9a;
+        }
+
+        .modal-body {
+            padding: 20px 40px;
+        }
+
+        /* Form styles */
+        .form-class .form-control {
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-class .form-control:focus {
+            border-color: #8e24aa;
+            box-shadow: 0 8px 15px rgba(142, 36, 170, 0.8);
+        }
+
+        .form-class .btn {
+            background-color: #6a1b9a;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .form-class .btn:hover {
+            background-color: #8e24aa;
+            box-shadow: 0 12px 20px rgba(142, 36, 170, 0.8);
+        }
+
+        /* Card styles */
+        .card-body {
+            color: #2c7be5;
+        }
+
+        .card-title a {
+            color: #2c7be5;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .card-title a:hover {
+            color: #1a5bbf;
+        }
+
+        .list-group-item {
+            color: #2c7be5;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .list-group-item:hover {
+            background-color: #e9f2fe;
+        }
+
+        /* Additional styles */
+        .blur {
+            filter: blur(2px);
+        }
+
+        .container {
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card {
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.02);
+        }
+
+        .blurred {
+            filter: blur(4px);
+            pointer-events: none;
+        }
+
+        .category-container {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .category-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background-color: #f7f7f7;
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .category-link:hover {
+            background-color: #2c7be5;
+            color: #ffffff;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .category-link.selected {
+            background-color: #2c7be5;
+            color: #ffffff;
+        }
+
+        .category-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-container {
+            flex: 1 0 auto;
+        }
+
+        .category-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background-color: #f7f7f7;
+            color: #2c7be5;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .category-link:hover {
+            background-color: #2c7be5;
+            color: #ffffff;
+            box-shadow: 0 6px 8px rgba(1, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .category-link.selected {
+            background-color: #2c7be5;
+            color: #ffffff;
+        }
+
+        .category-link {
+            padding: 10px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .category-link.selected {
+            background-color: #8b0000; /* Dark Red */
+            color: #fff;
+            font-weight: bold;
+        }
+
+        #message-container {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            z-index: 1050;
+            text-align: center;
+        }
+
+        #message {
+            display: inline-block;
+            max-width: 90%;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .modal-title {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #e5e5e5;
+            background-color: #f5f5f5;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
     <div class="card mb-3">
         <div class="card-body">
+            <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="messageModalLabel">Message</h5>
+                        </div>
+                        <div class="modal-body">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
@@ -12,161 +342,125 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Oqim yaratish</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
                         </div>
                         <div class="modal-body">
+                            <!-- Message container -->
+                            <div id="message-container" style="display:none;">
+                                <div id="message" class="alert"></div>
+                            </div>
                             <form method="post" class="form-class" action="{% url 'create_stream' %}">
                                 {% csrf_token %}
-
                                 <input name="product" type="hidden" id="hidden_product" value="test">
-
                                 <input type="text" name="name" class="form-control"
-                                       placeholder="Oqim uchun nom kiriting" required="" id="id_name">
-
-
-                                {#                                Chegirma <input type="text" name="discount" class="form-control"#}
-                                {#                                                placeholder="Chegirma miqdori:  so'mgacha" id="id_discount">#}
-                                {##}
-                                {#                                Qo'shimcha foyda <input type="text" name="additional_benefit" class="form-control"#}
-                                {#                                                        placeholder="Qo'shimcha foyda:" id="id_additional_benefit">#}
-                                {##}
-                                {#                                Pullik dostavka <input type="checkbox" name="paid_delivery" id="id_paid_delivery">#}
-
+                                       placeholder="Oqim uchun nom kiriting" required id="id_name">
+                                <br>
+                                <input type="text" name="discount" class="form-control" placeholder="Chegirma"
+                                       id="id_discount">
+                                <br>
+                                <input type="text" name="benefit" class="form-control" placeholder="Qo'shimcha foyda"
+                                       id="id_benefit">
                                 <input type="submit" class="btn btn-primary mt-4" value="Oqim yaratish">
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 500px">
-                    <div class="modal-content position-relative">
-                        <div class="position-absolute top-0 end-0 mt-2 me-2 z-index-1">
-                            <button class="btn-close btn btn-sm btn-circle d-flex flex-center transition-base"
-                                data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body p-0">
-                            <div class="rounded-top-lg py-3 ps-4 pe-6 bg-light">
-                                <h4 class="mb-1" id="modalExampleDemoLabel">Add a new illustration </h4>
+            <br>
+            <h3 class="text-center" style="color:#2c7be5"> Hozirda sotuvda bor <br> mahsulotlar </h3>
+            <br>
+            <div class="container border-bottom-4">
+                <div class="header_tab_menu">
+                    <div class="header_menu">
+                        <div class="col">
+                            <div class="category-container">
+                                <a href="{% url 'market_list' %}"
+                                   class="category-link {% if not selected_category_slug %}selected{% endif %}">All</a>
                             </div>
-                            <div class="p-4 pb-0">
-                                <form method="POST" class="form-class">
-
-
-
-
-
-                                    <input type="submit" class="btn btn-primary mt-4" value="Oqim yaratish">
-                                </form>
+                            <div class="category-container">
+                                <a href="{% url 'market_list' %}?category=top_product"
+                                   class="category-link {% if selected_category_slug == 'top_product' %}selected{% endif %}">Top
+                                    Products</a>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="button">Understood </button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <div class="container">
-                <br>
-                <h3 class="text-center" style="color:#2c7be5"> Hozirda sotuvda bor <br> mahsulotlar </h3>
-                <br>
-                <div class="container border-bottom-4">
-                    <div class="header_tab_menu">
-                        <div class="header_menu"
-                             style="border: 1px solid #2c7be5; border-radius: 20px; margin-right: 5px; padding: 5px; display: inline-block;">
-                            <a href="{% url 'market_list' %}" class="btn btn-default"
-                               style="color: #2c7be5; text-decoration: none;"> All </a>
-
                             {% for category in categories %}
-                                <div style="border: 1px solid #2c7be5; border-radius: 20px; margin-right: 5px; padding: 5px; display: inline-block;">
+                                <div class="category-container">
                                     <a href="{% url 'market_list' %}?category={{ category.slug }}"
-                                       class="btn btn-default"
-                                       style="color: {% if category.slug == selected_category_slug %}red{% else %}#2c7be5{% endif %}; text-decoration: none;"> {{ category.name }} </a>
+                                       class="category-link {% if category.slug == selected_category_slug %}selected{% endif %}">
+                                        {{ category.name }}
+                                    </a>
                                 </div>
                             {% endfor %}
-
-
                         </div>
                     </div>
-
                 </div>
-
-                <br>
-
-                <div class="row">
-                    {% for product in products %}
-                        <div class="col-sm-4 p-2" style="border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
-                            <div class="card">
-                                <a href="{% url 'product_detail' product.slug %}" target="_blank">
-                                    {% thumbnail product.first_image.image "250x245" crop="center" as im %}
-                                        <img class="rounded-top" src="{{ im.url }}" alt="#">
-                                    {% endthumbnail %}
-                                </a>
-                                <div class="card-body" style="color: #2c7be5;">
-                                    <h5 class="card-title">
-                                        <a href="/product-detail/izlash-kitobi" target="_blank">
-                                            {{ product.name }}
-                                        </a>
-                                    </h5>
-                                    <p class="text-muted" style="color: #2c7be5;"> {{ product.price }} so'm </p>
-                                </div>
-
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item" style="color: #2c7be5;">
-                                        To'lov:
-                                        <strong>30000 </strong></li>
-
-                                    <li class="list-group-item" style="color: #2c7be5;">
-                                        Zaxirada:
-                                        <strong> {{ product.quantity }} ta </strong>
-                                    </li>
-
-                                    <li class="list-group-item" style="color: #2c7be5;">
-                                        Chegirma: <strong>yuq </strong>
-                                    </li>
-                                </ul>
-
-                                <a href="https://t.me/alijahon_uz_Internet_magazin/1426"
-                                   class="btn btn-danger text-white mt-2">Advertisement
-                                    Post</a>
-                                <button class="btn btn-primary btn_open_modal" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal" name="{{ product.id }}">Create Stream
-                                </button>
-                                <a href="/admin_page/product/417" class="btn btn-danger text-white mt-2">More</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-
             </div>
-
+            <br>
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-sm-12 col-md-4 p-2 product-card"
+                         style="border-radius: 10px; margin-bottom: 15px; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                        <a href="{% url 'product_detail' product.slug %}" target="_blank">
+                            <div id="carouselExampleControls{{ product.id }}" class="carousel slide"
+                                 data-bs-ride="carousel">
+                                {% thumbnail product.first_image.image '272x272' crop="center" as image %}
+                                    <img class="rounded-1 fit-cover h-100 w-100"
+                                         src="{{ image.url }}" alt="{{ product.name }}"
+                                         style="border-radius: 15px;">
+                                {% endthumbnail %}
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'product_detail' product.slug %}" target="_blank">{{ product.name }}</a>
+                            </h5>
+                            <p class="text-muted">{{ product.price }} so'm</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">To'lov: <strong>{{ product.user_payment }}</strong></li>
+                            <li class="list-group-item">Zaxirada: <strong>{{ product.quantity }} ta</strong></li>
+                            <li class="list-group-item">Chegirma: <strong>{{ product.discount }}</strong></li>
+                        </ul>
+                        <a href="https://t.me/ccpy2024" class="btn btn-danger text-white mt-2 custom-ad-btn">Advertisement
+                            Post</a>
+                        <br>
+                        <button class="btn btn-primary btn_open_modal mt-2 custom-btn" type="button"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal" name="{{ product.id }}">Create
+                            Stream
+                        </button>
+                        <br>
+                        <a href="/admin_page/product/{{ product.id }}"
+                           class="btn btn-danger text-white mt-2 custom-btn">More</a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Prev</a>
+                        <a class="page-link" href="?page=
+                                
+                                
+                                {{ page_obj.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">Prev</a>
                     </li>
                 {% endif %}
-
                 {% for num in page_obj.paginator.page_range %}
                     {% if page_obj.number == num %}
-                        <li class="page-item"><a class="page-link ">{{ num }}</a></li>
+                        <li class="page-item"><a class="page-link">{{ num }}</a></li>
                     {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                        <li class="page-item"><a class="page-link " href="?page={{ num }}">{{ num }}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=
+                                
+                                
+                                {{ num }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{ num }}</a>
+                        </li>
                     {% endif %}
                 {% endfor %}
-            
-                {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page=
+                            
+                            
+                            {{ page_obj.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">Next</a>
                     </li>
-
                 {% endif %}
-
-
             </ul>
         </nav>
     </div>
@@ -180,5 +474,93 @@
             console.log(product_id);
             $('#hidden_product').val(product_id);
         })
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.custom-btn, .custom-ad-btn');
+
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function () {
+                    buttons.forEach(btn => {
+                        if (btn !== button) {
+                            btn.classList.add('blur');
+                        }
+                    });
+                });
+
+                button.addEventListener('mouseleave', function () {
+                    buttons.forEach(btn => {
+                        btn.classList.remove('blur');
+                    });
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const products = document.querySelectorAll('.product-card');
+
+            products.forEach(product => {
+                product.addEventListener('mouseover', () => {
+                    products.forEach(p => {
+                        if (p !== product) {
+                            p.classList.add('blurred');
+                        }
+                    });
+                });
+
+                product.addEventListener('mouseout', () => {
+                    products.forEach(p => {
+                        p.classList.remove('blurred');
+                    });
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to show message
+            function showMessage(message, type) {
+                var messageContainer = document.getElementById('message-container');
+                var messageElement = document.getElementById('message');
+
+                messageElement.textContent = message;
+                messageElement.className = 'alert alert-' + type;
+                messageContainer.style.display = 'block';
+
+                setTimeout(function () {
+                    messageContainer.style.display = 'none';
+                    messageElement.className = 'alert';
+                    messageElement.textContent = '';
+                }, 2000);
+            }
+
+            // Triggering a message if there are any messages from the backend
+            {% if messages %}
+                {% for message in messages %}
+                    showMessage("{{ message }}", "{{ message.tags }}");
+                {% endfor %}
+            {% endif %}
+        });
+
+        function hideMessages() {
+            const messageContainer = document.getElementById('message-container');
+            if (messageContainer) {
+                setTimeout(() => {
+                    messageContainer.style.display = 'none';
+                }, 50000);
+            }
+        }
+
+        window.onload = hideMessages;
+
+        $(document).ready(function () {
+            // If there are messages, show the modal
+            {% if messages %}
+                $('#messageModal').modal('show');
+                setTimeout(function () {
+                    $('#messageModal').modal('hide');
+                }, 3000);
+            {% endif %}
+        });
     </script>
+
+
+
 {% endblock %}

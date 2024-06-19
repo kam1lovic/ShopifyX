@@ -1,0 +1,31 @@
+
+
+
+task
+1. pagination ✅
+2. detailda kamchiliklar ✅
+3. kunlik, haftalik, oylik statistic ✅
+5. i18n ✅
+6. http://localhost:8000/order-success ✅
+7. dostavkani ham chiqarish (dostavka narxini adminkadan admin ozgartira oladi) ✅
+
+
+task
+
+1. http://localhost:8000/uz/market oqim yaratishda (chegirma va qoshimcha foydani qoshish) ✅
+2. productga oqim orqali sotilganda beriladigan pulni qoshish ✅
+3. (front) http://localhost:8000/uz/stream-list copy, link ✅
+
+
+task
+1. Payment
+2. Questions
+3. isort, flake8
+4. hisobot(admin)
+5. operator page(ish vaqti)
+
+
+
+
+
+

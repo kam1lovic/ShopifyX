@@ -1,77 +1,95 @@
 {% extends 'apps/base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load humanize %}
+
+{% block style %}
+    <style>
+        .hover\:bg-primary-light:hover {
+            background-color: #f0f0f0;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 1);
+        }
+    </style>
+
+{% endblock %}
 
 {% block content %}
-    <div class="card">
-        <div class="card-header">
-            <div class="row justify-content-between">
-
-
-            </div>
-        </div>
-        <div class="card-body p-0">
-            <div class="row gx-card mx-0 bg-200 text-900 fs--1 fw-semi-bold">
-                <div class="col-9 col-md-8 py-2">Name</div>
-                <div class="col-3 col-md-4">
-                    <div class="row">
-                        <div class="col-md-8 py-2 d-none d-md-block text-center">Quantity</div>
-                        <div class="col-12 col-md-4 text-end py-2">Price</div>
-                    </div>
+    {% if orders %}
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white" style="background-color:rgba(0,148,255,0.75)">
+                <div class="row justify-content-between" style="background-color:rgba(0,148,255,0.75)">
+                    <h5 class="mb-0" style="color: white">Order Summary</h5>
                 </div>
             </div>
-            {% for order in orders %}
-                <div class="row gx-card mx-0 align-items-center border-bottom border-200">
-                    <div class="col-8 py-3">
-                        <div class="d-flex align-items-center">
-                            <a href="app/e-commerce/product/product-details.html">
-                                {% thumbnail order.product.first_image.image '60x60' crop="center" as im %}
-                                    <img class="img-fluid rounded-1 me-3 d-none d-md-block"
-                                         src="{{ im.url }}" alt="" width="60">
-                                {% endthumbnail %}
-                            </a>
-                            <div class="flex-1">
-                                <h5 class="fs-0">
-                                    <a class="text-900"
-                                       href="app/e-commerce/product/product-details.html">{{ order.product.name }}</a>
-                                </h5>
-                                <div class="fs--2 fs-md--1"><a class="text-danger" href="#">Remove</a></div>
-                            </div>
+            <div class="card-body p-0">
+                <div class="row gx-card mx-0 bg-light text-dark fs--1 fw-semi-bold">
+                    <div class="col-9 col-md-8 py-2">Name</div>
+                    <div class="col-3 col-md-4">
+                        <div class="row">
+                            <div class="col-md-8 py-2 d-none d-md-block text-center">Quantity</div>
+                            <div class="col-12 col-md-4 text-end py-2">Price</div>
                         </div>
                     </div>
-                    <div class="col-4 py-3">
-                        <div class="row align-items-center">
-                            <div class="col-md-8 d-flex justify-content-end justify-content-md-center order-1 order-md-0">
-                                <div>
-                                    <div class="flex-1">
-                                        <h5 class="fs-0">
-                                            <a class="text-900">
-                                                {{ order.quantity }}</a>
-                                        </h5>
-                                    </div>
-
+                </div>
+                {% for order in orders %}
+                    <div class="row gx-card mx-0 align-items-center border-bottom border-200 hover:bg-primary-light">
+                        <div class="col-8 py-3">
+                            <div class="d-flex align-items-center">
+                                <a href="{% url 'product_detail' order.product.slug %}">
+                                    {% thumbnail order.product.first_image.image '60x60' crop="center" as im %}
+                                        <img class="img-fluid rounded-1 me-3 d-none d-md-block" src="{{ im.url }}"
+                                             alt="" width="60">
+                                    {% endthumbnail %}
+                                </a>
+                                <div class="flex-1">
+                                    <h5 class="fs-0">
+                                        <a class="text-900 text-decoration-none"
+                                           href="{% url 'product_detail' order.product.slug %}">{{ order.product.name }}</a>
+                                    </h5>
 
                                 </div>
                             </div>
-                            <div class="col-md-4 text-end ps-0 order-0 order-md-1 mb-2 mb-md-0 text-600">
-                                $ {{ order.product.price }}</div>
+                        </div>
+                        <div class="col-4 py-3">
+                            <div class="row align-items-center">
+                                <div class="col-md-8 d-flex justify-content-end justify-content-md-center order-1 order-md-0">
+                                    <div>
+                                        <div class="flex-1">
+                                            <h5 class="fs-0">
+                                                <a class="text-900 text-decoration-none">{{ order.quantity }}</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-end ps-0 order-0 order-md-1 mb-2 mb-md-0 text-600">
+                                    $ {{ order.product.price|intcomma }}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-            <div class="row fw-bold gx-card mx-0">
-                <div class="col-9 col-md-8 py-2 text-end text-900">Total</div>
-                <div class="col px-0">
-                    <div class="row gx-card mx-0">
-                        <div class="col-md-8 py-2 d-none d-md-block text-center">{{ orders.count }} (items)</div>
-                        <div class="col-12 col-md-4 text-end py-2">$2442242
+                {% endfor %}
+                <div class="row fw-bold gx-card mx-0 bg-primary text-white">
+                    <div class="col-9 col-md-8 py-2 text-end">Total</div>
+                    <div class="col px-0">
+                        <div class="row gx-card mx-0">
+                            <div class="col-md-8 py-2 d-none d-md-block text-center">{{ orders.count }} (items)</div>
+                            <div class="col-12 col-md-4 text-end py-2">${{ total_p|intcomma }}</div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
-    </div>
+    {% else %}
+        <div class="card-footer border-top d-flex justify-content-center">
+            <h2>You have no orders!</h2>
+        </div>
+
+    {% endif %}
 {% endblock %}
+
+    
 
